@@ -32,13 +32,13 @@ const Body = () => {
 
       <Stack sx={{gap: 2}}>
         {/*This shows messages sent from you*/}
-        <Stack sx={{ alignItems: 'flex-start'}}>
+        <Stack sx={{alignItems: 'flex-start'}}>
           <Typography variant='caption'>You</Typography>
           <Typography>Hello there</Typography>
         </Stack>
 
         {/*This shows messages received by you*/}
-        <Stack sx={{ alignItems: 'flex-end'}}>
+        <Stack sx={{alignItems: 'flex-end'}}>
           <Typography variant='caption'>Other</Typography>
             <Typography>Hey, I'm good, you?</Typography>
         </Stack>
