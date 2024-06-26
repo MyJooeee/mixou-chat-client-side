@@ -38,7 +38,7 @@ const Mixou = ({socket}) => {
 
   // JSX ----------------------------------------------------------------------------
   return (
-    <Theme paperProps={{flexGrow: 1, m: 5}}>
+    <Theme ref={refContainer} paperProps={{flexGrow: 1, m: 5}}>
       <Stack
         direction='row' 
         sx={{

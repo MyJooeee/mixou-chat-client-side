@@ -32,7 +32,7 @@ const Footer = ({socket}) => {
     <form onSubmit={handleSubmit}>
       <Stack 
         direction='row' 
-        sx={{alignItems: 'baseline', gap: 1, p: 1}}>
+        sx={{alignItems: 'baseline', gap: 1, p: 1, flexWrap: 'wrap'}}>
           <TextField
             label="Message"
             id="margin-normal"

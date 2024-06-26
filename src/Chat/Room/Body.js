@@ -8,6 +8,7 @@ import { Button, Stack, Typography } from '@mui/material';
 const Body = ({dimensions, messages, lastMessageRef}) => {
   const navigate = useNavigate();
   const username = localStorage.getItem('mixouChatUsername');
+  const heightMessages = dimensions.height * 0.48;
 
   // Handlers -----------------------------------------------------------------------
   const handleLeaveChat = () => {
@@ -23,9 +24,10 @@ const Body = ({dimensions, messages, lastMessageRef}) => {
         direction='row' 
         sx={{
           alignItems: 'baseline',
-          gap: 1
+          gap: 1,
+          flexWrap: 'wrap'
         }}>
-        <Typography sx={{flexGrow: 1}}>Welcome <strong>{username}</strong>. Hangout with friends !</Typography>
+        <Typography sx={{flexGrow: 1}}>Welcome <strong>{username} !</strong></Typography>
         <Button
           variant="contained"
           color='error'
@@ -34,7 +36,7 @@ const Body = ({dimensions, messages, lastMessageRef}) => {
         </Button>
       </Stack>
 
-      <Stack sx={{ height: '350px', overflowY: 'scroll', gap: 2}}>
+      <Stack sx={{ height: heightMessages, overflowY: 'scroll', gap: 2}}>
         {messages.map((message) =>
             message.name === localStorage.getItem('mixouChatUsername') ? (
               <Stack key={message.id} sx={{alignItems: 'flex-end'}}>

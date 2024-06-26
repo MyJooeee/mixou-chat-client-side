@@ -6,14 +6,14 @@ import { Container, Paper, Stack } from '@mui/material';
 import Copyrights from './Copyrights';
 
 
-const Theme = forwardRef(({children, paperProps = null, sx = null}, refContainer) => {
+const Theme = forwardRef(({children, paperProps = null, sx = null}, ref) => {
 
 
   // JSX --------------------------------------------------------------------------
   return (
     <>
       <Container
-        ref={refContainer}
+        ref={ref}
         maxWidth={false} 
         sx={{
           display: 'flex',
