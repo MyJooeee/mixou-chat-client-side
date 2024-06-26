@@ -1,4 +1,5 @@
 // Core
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Components
@@ -8,7 +9,7 @@ import Theme from './Theme';
 import Mixou from '../Media/mixou.jpg';
 
 // ---------------------------------------------------------------------------------
-const Login = () => {
+const Login = ({socket}) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [errorUsername, SetErrorUsername] = useState(true);
@@ -18,6 +19,8 @@ const Login = () => {
     if (errorUsername) return;
     event.preventDefault();
     localStorage.setItem('mixouChatUsername', username);
+    // Send the username and socket ID to the Node.js server
+    socket.emit('newUser', { username, socketID: socket.id });
     navigate('/mixou');
   };
 
@@ -59,5 +62,9 @@ const Login = () => {
     </Theme>
   );
 };
+
+Login.propTypes = {
+  socket: PropTypes.object
+}
 
 export default Login;

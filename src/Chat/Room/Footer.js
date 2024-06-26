@@ -1,16 +1,25 @@
 // Core
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 // Components
 import { Button, Stack, TextField } from '@mui/material';
 
 // ---------------------------------------------------------------------------------
-const Footer = () => {
+const Footer = ({socket}) => {
+
   const [message, setMessage] = useState('');
 
   // Handlers ----------------------------------------------------------------------
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log({ userName: localStorage.getItem('mixouChatUsername'), message });
+    if (message.trim() && localStorage.getItem('mixouChatUsername')) {
+      socket.emit('message', {
+        text: message,
+        name: localStorage.getItem('mixouChatUsername'),
+        id: `${socket.id}${Math.random()}`,
+        socketID: socket.id
+      });
+    }
     setMessage('');
   };
 
@@ -29,6 +38,7 @@ const Footer = () => {
             id="margin-normal"
             name="message"
             sx={{flexGrow: 1}}
+            value={message}
             onChange={handleMessage}
             />
           <Button 
@@ -42,5 +52,9 @@ const Footer = () => {
     </form>
   );
 };
+
+Footer.propTypes = {
+  socket: PropTypes.object
+}
 
 export default Footer;
