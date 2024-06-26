@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Components
-import { Avatar, Button, Container, Paper, Stack, TextField, Typography } from '@mui/material';
+import { Avatar, Button, Stack, TextField, Typography } from '@mui/material';
+import Theme from './Theme';
 // Images
 import Mixou from '../Media/mixou.jpg';
 
@@ -17,7 +18,7 @@ const Login = () => {
     if (errorUsername) return;
     event.preventDefault();
     localStorage.setItem('mixouChatUsername', username);
-    navigate('/chat');
+    navigate('/mixou');
   };
 
   const handleInput = (event) => {
@@ -32,32 +33,30 @@ const Login = () => {
 
   // JSX --------------------------------------------------------------------------
   return (
-    <Container maxWidth={false} sx={{background: 'linear-gradient(#e66465, #9198e5)', p: 5}}disableGutters>
-      <Paper elevation={3} sx={{p: 2, gap: 2}}>
-        <form onSubmit={handleSubmit}>
-          <Stack sx={{alignItems: 'center', gap: 1}}>
-            <Avatar src={Mixou} alt="Mixou" sx={{width: 128, height: 128}} />
-            <Typography variant="h5" component="h3" sx={{textAlign: 'center'}}>Welcome to Mixou Chat !</Typography>
-              <Typography component="p">Sign in before access to Chat.</Typography>
-              <TextField
-                label="Name"
-                id="margin-normal"
-                name="name"
-                helperText="Enter a username with 6 characters at least."
-                onChange={handleInput}
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                disabled={errorUsername}
-              >
-                Sign in
-              </Button>
-          </Stack>
-        </form>
-      </Paper>
-    </Container>
+    <Theme>
+      <form onSubmit={handleSubmit}>
+        <Stack sx={{alignItems: 'center', gap: 1}}>
+          <Avatar src={Mixou} alt="Mixou" sx={{width: 128, height: 128}} />
+          <Typography variant="h5" component="h3" sx={{textAlign: 'center'}}>Welcome to Mixou Chat !</Typography>
+            <Typography component="p">Sign in before access to Chat.</Typography>
+            <TextField
+              label="Name"
+              id="margin-normal"
+              name="name"
+              helperText="Enter a username with 6 characters at least."
+              onChange={handleInput}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              disabled={errorUsername}
+            >
+              Sign in
+            </Button>
+        </Stack>
+      </form>
+    </Theme>
   );
 };
 
