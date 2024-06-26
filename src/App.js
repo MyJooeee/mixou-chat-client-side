@@ -5,7 +5,6 @@ import socketIO from 'socket.io-client';
 import Login from './Chat';
 import Mixou from './Chat/Mixou';
 // Environment variables
-const APP_VERSION = process.env.REACT_APP_VERSION;
 const MIXOU_SERVER_URL = process.env.REACT_APP_MIXOU_SERVER_URL;
 // Connect client to the server
 const socket = socketIO.connect(MIXOU_SERVER_URL);
