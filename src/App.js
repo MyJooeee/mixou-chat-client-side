@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import socketIO from 'socket.io-client';
 // Local components
 import Login from './Chat';
-import Mixou from './Chat/Mixou';
+import Mixou from './Chat/Room';
 // Environment variables
 const MIXOU_SERVER_URL = process.env.REACT_APP_MIXOU_SERVER_URL;
 // Connect client to the server

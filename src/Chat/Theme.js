@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Container, Paper, Stack } from '@mui/material';
 import Copyrights from './Copyrights';
 
-const Theme = ({children}) => {
+const Theme = ({children, paperProps = null, sx = null}) => {
 
 
   // JSX --------------------------------------------------------------------------
@@ -19,8 +19,8 @@ const Theme = ({children}) => {
           height: '100vh'
         }}
         disableGutters>
-        <Stack sx={{flexGrow: 1, alignItems: 'center', justifyContent: 'center'}}> 
-          <Paper elevation={3} sx={{p: 2, gap: 2}}>
+        <Stack sx={{flexGrow: 1, ...sx}}>
+          <Paper elevation={3} sx={{p: 2, gap: 2, ...paperProps}}>
             {children}
           </Paper>
         </Stack>
@@ -33,7 +33,9 @@ const Theme = ({children}) => {
 
 
 Theme.propTypes = {
-  Children: PropTypes.node
+  Children: PropTypes.node,
+  paperProps: PropTypes.object,
+  sx: PropTypes.object
 };
 
 export default Theme;

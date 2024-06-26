@@ -10,7 +10,7 @@ const Copyrights = () => {
     <Stack 
       direction="row" 
       sx={{
-        backgroundColor: purple[900], 
+        backgroundColor: purple[500], 
         justifyContent: 'center', 
         py: 1
     }}>

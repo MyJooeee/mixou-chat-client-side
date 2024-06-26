@@ -33,7 +33,7 @@ const Login = () => {
 
   // JSX --------------------------------------------------------------------------
   return (
-    <Theme>
+    <Theme sx={{alignItems: 'center', justifyContent: 'center'}}>
       <form onSubmit={handleSubmit}>
         <Stack sx={{alignItems: 'center', gap: 1}}>
           <Avatar src={Mixou} alt="Mixou" sx={{width: 128, height: 128}} />
