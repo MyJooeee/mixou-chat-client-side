@@ -1,6 +1,6 @@
 // Core
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 // Components
 import { Stack } from '@mui/material';
 import Theme from '../Theme';
@@ -12,15 +12,34 @@ import Footer from './Footer';
 const Mixou = ({socket}) => {
 
   const [messages, setMessages] = useState([]);
+  const refContainer = useRef();
+  const [dimensions, setDimensions] = useState({ width:0, height: 0 });
+  const lastMessageRef = useRef(null);
+
+  // Effects -----------------------------------------------------------------------
+    useEffect(() => {
+      // Container size
+      if (refContainer.current) {
+        setDimensions({
+          width: refContainer.current.offsetWidth,
+          height: refContainer.current.offsetHeight
+        });
+      }
+    }, []);
 
   useEffect(() => {
     socket.on('messageResponse', (data) => setMessages([...messages, data]));
   }, [socket, messages]);
 
+  useEffect(() => {
+    // 👇️ scroll to bottom every time messages change
+    lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
+  // JSX ----------------------------------------------------------------------------
   return (
     <Theme paperProps={{flexGrow: 1, m: 5}}>
-      <Stack 
+      <Stack
         direction='row' 
         sx={{
           height: '100%', 
@@ -34,7 +53,11 @@ const Mixou = ({socket}) => {
             border: '1px solid red', 
             justifyContent: 'space-between'
           }}> 
-          <Body messages={messages}/>
+          <Body 
+            dimensions={dimensions} 
+            messages={messages} 
+            lastMessageRef={lastMessageRef}
+          />
           <Footer socket={socket}/>
         </Stack>
       </Stack>
