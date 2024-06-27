@@ -12,12 +12,10 @@ const socket = socketIO.connect(MIXOU_SERVER_URL);
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <Routes>
-          <Route path="/" element={<Login socket={socket} />}></Route>
-          <Route path="/mixou" element={<Mixou socket={socket} />}></Route>
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Login socket={socket} />}></Route>
+        <Route path="/mixou" element={<Mixou socket={socket} />}></Route>
+      </Routes>
     </BrowserRouter>
   );
 }

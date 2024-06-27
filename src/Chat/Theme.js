@@ -11,25 +11,23 @@ const Theme = forwardRef(({children, paperProps = null, sx = null}, ref) => {
 
   // JSX --------------------------------------------------------------------------
   return (
-    <>
-      <Container
-        ref={ref}
-        maxWidth={false} 
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          background: 'linear-gradient(#e66465, #9198e5)',
-          height: '100vh'
-        }}
-        disableGutters>
-        <Stack sx={{flexGrow: 1, ...sx}}>
-          <Paper elevation={3} sx={{p: 2, gap: 2, ...paperProps}}>
-            {children}
-          </Paper>
-        </Stack>
-        <Copyrights />
-      </Container>
-    </>
+    <Container
+      ref={ref}
+      maxWidth={false} 
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        background: 'linear-gradient(#e66465, #9198e5)',
+        height: '100vh'
+      }}
+      disableGutters>
+      <Stack sx={{flexGrow: 1, ...sx}}>
+        <Paper elevation={3} sx={{p: 2, gap: 2, ...paperProps}}>
+          {children}
+        </Paper>
+      </Stack>
+      <Copyrights />
+    </Container>
   );
 
 });

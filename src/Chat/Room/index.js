@@ -39,25 +39,20 @@ const Mixou = ({socket}) => {
   // JSX ----------------------------------------------------------------------------
   return (
     <Theme ref={refContainer} paperProps={{flexGrow: 1, m: 5}}>
-      <Stack
-        direction='row' 
-        sx={{
-          height: '100%', 
-          justifyContent: 'space-between'
-        }}>
-          <Bar socket={socket}/>
-          <Divider orientation='vertical'/>
-          <Stack
-            sx={{
-              width: '75%', 
-              justifyContent: 'space-between'
-            }}> 
-            <Body 
-              dimensions={dimensions} 
-              messages={messages} 
-              lastMessageRef={lastMessageRef}
-            />
-            <Footer socket={socket}/>
+      <Stack direction='row' sx={{height: '100%', justifyContent: 'space-between'}}>
+        <Bar socket={socket}/>
+        <Divider orientation='vertical'/>
+        <Stack
+          sx={{
+            width: '75%', 
+            justifyContent: 'space-between'
+          }}> 
+          <Body 
+            dimensions={dimensions} 
+            messages={messages} 
+            lastMessageRef={lastMessageRef}
+          />
+          <Footer socket={socket}/>
         </Stack>
       </Stack>
     </Theme>
