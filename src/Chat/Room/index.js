@@ -45,19 +45,19 @@ const Mixou = ({socket}) => {
           height: '100%', 
           justifyContent: 'space-between'
         }}>
-        <Bar socket={socket}/>
-        <Divider orientation='vertical'/>
-        <Stack
-          sx={{
-            width: '75%', 
-            justifyContent: 'space-between'
-          }}> 
-          <Body 
-            dimensions={dimensions} 
-            messages={messages} 
-            lastMessageRef={lastMessageRef}
-          />
-          <Footer socket={socket}/>
+          <Bar socket={socket}/>
+          <Divider orientation='vertical'/>
+          <Stack
+            sx={{
+              width: '75%', 
+              justifyContent: 'space-between'
+            }}> 
+            <Body 
+              dimensions={dimensions} 
+              messages={messages} 
+              lastMessageRef={lastMessageRef}
+            />
+            <Footer socket={socket}/>
         </Stack>
       </Stack>
     </Theme>
