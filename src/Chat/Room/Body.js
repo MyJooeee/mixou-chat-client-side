@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 // Components
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Divider, Stack, Typography } from '@mui/material';
 
 // ---------------------------------------------------------------------------------
 const Body = ({dimensions, messages, lastMessageRef}) => {
@@ -35,6 +35,8 @@ const Body = ({dimensions, messages, lastMessageRef}) => {
           LEAVE CHAT
         </Button>
       </Stack>
+
+      <Divider orientation='horizontal'/>
 
       <Stack sx={{ height: heightMessages, overflowY: 'scroll', gap: 2}}>
         {messages.map((message) =>

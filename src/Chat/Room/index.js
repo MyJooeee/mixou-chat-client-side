@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect, useRef } from 'react';
 // Components
-import { Stack } from '@mui/material';
+import { Divider, Stack } from '@mui/material';
 import Theme from '../Theme';
 import Bar from './Bar';
 import Body from './Body';
@@ -43,14 +43,13 @@ const Mixou = ({socket}) => {
         direction='row' 
         sx={{
           height: '100%', 
-          justifyContent: 'space-between', 
-          border: '1px solid blue'
+          justifyContent: 'space-between'
         }}>
         <Bar socket={socket}/>
+        <Divider orientation='vertical'/>
         <Stack
           sx={{
             width: '75%', 
-            border: '1px solid red', 
             justifyContent: 'space-between'
           }}> 
           <Body 
