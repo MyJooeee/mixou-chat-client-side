@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 // Components
-import { Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 
 const Bar = ({socket}) => {
 
@@ -19,7 +19,10 @@ const Bar = ({socket}) => {
         <Typography variant='h6'>Active users</Typography>
         <Stack>
         {users.map((user) => (
-          <Typography key={user.socketID} variant='body2'>{user.username}</Typography>
+          <Stack key={user.socketID} direction='row' sx={{gap: 1, alignItems: 'center'}}>
+            <Typography variant='body2'>{user.username}</Typography>
+            <Box sx={{width: 8, height: 8, backgroundColor: 'green', borderRadius: '50%'}}/>
+          </Stack>
         ))}
         </Stack>
       </Stack>

@@ -38,7 +38,7 @@ const Body = ({isMediumDevice, dimensions, messages, lastMessageRef}) => {
 
   // JSX ----------------------------------------------------------------------------
   return (
-    <Stack sx={{gap: 5, p:1}}>
+    <Stack sx={{gap: 1, p:1}}>
       <Stack 
         direction='row' 
         sx={{

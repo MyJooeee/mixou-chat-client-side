@@ -26,7 +26,7 @@ const Login = ({socket}) => {
 
   const handleInput = (event) => {
     const username = event.target.value;
-    if (!username || username.length < 6) {
+    if (!username || username.length < 3 || username.length > 8) {
       SetErrorUsername(true);
       return;
       }
@@ -46,7 +46,7 @@ const Login = ({socket}) => {
               label="Name"
               id="margin-normal"
               name="name"
-              helperText="Enter a username with 6 characters at least."
+              helperText="Enter a username between 3 and 8 characters."
               onChange={handleInput}
             />
             <Button
