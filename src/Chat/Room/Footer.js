@@ -2,10 +2,11 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 // Components
-import { Button, Stack, TextField } from '@mui/material';
+import { Button, IconButton, Stack, TextField } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 
 // ---------------------------------------------------------------------------------
-const Footer = ({socket}) => {
+const Footer = ({isMediumDevice, socket}) => {
 
   const [message, setMessage] = useState('');
 
@@ -27,12 +28,32 @@ const Footer = ({socket}) => {
     setMessage(event.target.value);
   }
 
+    // Local component
+    const SendAction = () => {
+      if (isMediumDevice) return (
+        <IconButton type="submit">
+          <SendIcon/>
+        </IconButton> 
+      );
+  
+      return (
+        <Button 
+          type="submit" 
+          variant="contained" 
+          color='primary'
+          >
+          SEND
+        </Button>
+      );
+    };
+  
+
   // JSX --------------------------------------------------------------------------
   return (
     <form onSubmit={handleSubmit}>
       <Stack 
         direction='row' 
-        sx={{alignItems: 'baseline', gap: 1, p: 1, flexWrap: 'wrap'}}>
+        sx={{alignItems: 'center', gap: 1, p: 1}}>
           <TextField
             label="Message"
             id="margin-normal"
@@ -41,19 +62,14 @@ const Footer = ({socket}) => {
             value={message}
             onChange={handleMessage}
             />
-          <Button 
-            type="submit" 
-            variant="contained" 
-            color='primary'
-            >
-            SEND
-          </Button>
+          <SendAction />
       </Stack>
     </form>
   );
 };
 
 Footer.propTypes = {
+  isMediumDevice: PropTypes.bool,
   socket: PropTypes.object
 }
 

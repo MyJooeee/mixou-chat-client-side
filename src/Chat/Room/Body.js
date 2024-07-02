@@ -2,10 +2,11 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 // Components
-import { Button, Divider, Stack, Typography } from '@mui/material';
+import { Button, Divider, IconButton, Stack, Typography } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 // ---------------------------------------------------------------------------------
-const Body = ({dimensions, messages, lastMessageRef}) => {
+const Body = ({isMediumDevice, dimensions, messages, lastMessageRef}) => {
   const navigate = useNavigate();
   const username = localStorage.getItem('mixouChatUsername');
   const heightMessages = dimensions.height * 0.48;
@@ -17,23 +18,35 @@ const Body = ({dimensions, messages, lastMessageRef}) => {
     window.location.reload();
   };
 
+  // Local component
+  const LogoutAction = () => {
+    if (isMediumDevice) return (
+      <IconButton onClick={handleLeaveChat}>
+        <LogoutIcon/>
+      </IconButton> 
+    );
+
+    return (
+      <Button
+        variant="contained"
+        color='error'
+        onClick={handleLeaveChat}>
+        LEAVE CHAT
+      </Button>
+    );
+  };
+
   // JSX ----------------------------------------------------------------------------
   return (
     <Stack sx={{gap: 5, p:1}}>
       <Stack 
         direction='row' 
         sx={{
-          alignItems: 'baseline',
-          gap: 1,
-          flexWrap: 'wrap'
+          alignItems: 'center',
+          gap: 1
         }}>
-        <Typography sx={{flexGrow: 1}}>Welcome <strong>{username} !</strong></Typography>
-        <Button
-          variant="contained"
-          color='error'
-          onClick={handleLeaveChat}>
-          LEAVE CHAT
-        </Button>
+        <Typography sx={{flexGrow: 1}}>Welcome <strong>{username}</strong></Typography>
+        <LogoutAction />
       </Stack>
 
       <Divider orientation='horizontal'/>
@@ -59,6 +72,7 @@ const Body = ({dimensions, messages, lastMessageRef}) => {
 };
 
 Body.propTypes = {
+  isMediumDevice: PropTypes.bool,
   dimensions: PropTypes.object,
   messages: PropTypes.array,
   lastMessageRef: PropTypes.oneOfType([

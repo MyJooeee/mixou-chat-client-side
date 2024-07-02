@@ -13,7 +13,7 @@ const Bar = ({socket}) => {
   }, [socket, users]);
 
   return (
-    <Stack sx={{gap: 5, p:1}}>
+    <Stack sx={{gap: 2, p:1}}>
       <Typography variant='h5'>Mixou Chat</Typography>
       <Stack sx={{gap: 2}}>
         <Typography variant='h6'>Active users</Typography>
